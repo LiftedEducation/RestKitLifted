@@ -487,6 +487,13 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
                                                          managedObjectContext:(NSManagedObjectContext *)managedObjectContext
                                                                       success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
                                                                       failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+
+
+- (RKManagedObjectRequestOperation *)managedObjectRequestOperationWithRequest:(NSURLRequest *)request
+                                                          responseDescriptors:(NSArray *)responseDescriptors
+                                                         managedObjectContext:(NSManagedObjectContext *)managedObjectContext
+                                                                      success:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success
+                                                                      failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 #endif
 
 /**
@@ -877,6 +884,8 @@ RKMappingResult, RKRequestDescriptor, RKResponseDescriptor;
  @warning Will raise an exception if the value of the `paginationMapping` property is nil.
  */
 - (RKPaginator *)paginatorWithPathPattern:(NSString *)pathPattern parameters:(NSDictionary *)parameters;
+
+- (id)mergedParametersWithObject:(id)object method:(RKRequestMethod)method parameters:(NSDictionary *)parameters;
 
 @end
 
